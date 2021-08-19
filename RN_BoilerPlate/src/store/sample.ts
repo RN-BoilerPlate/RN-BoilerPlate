@@ -3,8 +3,9 @@ import createRequestSaga from '../hooks/createRequestSaga';
 import * as api from '../lib/api/api';
 import {takeLatest} from 'redux-saga/effects';
 import {createAction} from 'redux-actions';
+
 export interface Sample {
-  post: string[];
+  post: any;
   users: any[];
 }
 

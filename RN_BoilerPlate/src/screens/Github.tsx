@@ -1,9 +1,9 @@
 import React from 'react';
-import RN from 'react-native';
-import Paper from 'react-native-paper';
+import RN, { StyleSheet } from 'react-native';
+import {Text, Button} from 'react-native-paper';
 // import useCounter from '../hooks/useCounter';
 // import {Avatar} from 'react-native-paper';
-import {View, Text, Button} from 'react-native';
+import {View} from 'react-native';
 
 const Github: React.FC = () => {
   const contributors = [
@@ -25,18 +25,19 @@ const Github: React.FC = () => {
   ];
   const contributorComponents = contributors.map(e => {
     return (
-      <View style={{marginBottom: '2%'}} key={e.id}>
+      <View style={styles.contributor} key={e.id}>
         {/* <Avatar.Image size={24} source={require(e.image)} /> */}
         <Text>{`${e.id} - ${e.name}`}</Text>
       </View>
     );
   });
   return (
-    <RN.View>
+    <RN.View style={styles.view}>
       <Text>Made with ❤️, ⭐ please?</Text>
       {contributorComponents}
       <Button
-        title="github"
+        mode="contained"
+        style={styles.button}
         onPress={() =>
           RN.Linking.openURL('https://github.com/RN-BoilerPlate/RN-BoilerPlate')
         }>
@@ -45,5 +46,11 @@ const Github: React.FC = () => {
     </RN.View>
   );
 };
+
+export const styles = StyleSheet.create({
+  contributor: {marginBottom: '2%'},
+  view: {flex: 1, justifyContent: 'center',alignItems: 'center'},
+  button: {backgroundColor: 'black', color: 'white'}
+})
 
 export default Github;

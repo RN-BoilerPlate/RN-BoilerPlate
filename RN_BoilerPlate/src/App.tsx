@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator} from 'react-native';
+// import {ActivityIndicator} from 'react-native';
 import {Provider, useSelector} from 'react-redux';
 import {Provider as PaperProvider} from 'react-native-paper';
 import {composeWithDevTools} from 'redux-devtools-extension';
@@ -27,7 +27,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/Home';
 import CounterScreen from './screens/Counter';
 import GithubScreen from './screens/Github';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 const Tab = createBottomTabNavigator();
 
@@ -70,7 +69,7 @@ const RootNavigation: React.FC = () => {
     </PaperProvider>
   );
 };
-
+sagaMiddleware.run(rootSaga);
 const App: React.FC = () => {
   return (
     <Provider store={store}>

@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useCallback} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {View, Text, Button} from 'react-native';
-// import Paper from 'react-native-paper';
+import {View} from 'react-native';
+import {Text, Button} from 'react-native-paper';
 // import useCounter from '../hooks/useCounter';
 import {RootState} from '../store';
-import {up, down} from '../store/counter';
+import {up, down, reset} from '../store/counter';
+import {StyleSheet} from 'react-native';
 
 const Counter: React.FC = () => {
   const {number} = useSelector((state: RootState) => ({
@@ -15,22 +16,36 @@ const Counter: React.FC = () => {
   const onIncrease = useCallback(() => {
     dispatch(up());
   }, []);
+  const onReset = useCallback(() => {
+    dispatch(reset());
+  }, []);
   const onDecrease = useCallback(() => {
     dispatch(down());
   }, []);
   return (
-    <View>
-      <Text style={{fontWeight: 'bold'}}>Counter: {number}</Text>
-      <View style={{display: 'flex', flexDirection: 'row'}}>
-        <Button title="Increase" onPress={onIncrease}>
+    <View style={styles.view}>
+      <Text style={styles.boldText}>Counter: {number}</Text>
+      <View style={styles.buttonView}>
+        <Button mode="contained" style={styles.button} onPress={onIncrease}>
           Increase
         </Button>
-        <Button title="Decrease" onPress={onDecrease}>
+        <Button mode="contained" style={styles.button} onPress={onReset}>
+          Reset
+        </Button>
+        <Button mode="contained" style={styles.button} onPress={onDecrease}>
           Decrease
         </Button>
       </View>
     </View>
   );
 };
+
+export const styles = StyleSheet.create({
+  contributor: {marginBottom: '2%'},
+  view: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+  buttonView: {display: 'flex', flexDirection: 'column'},
+  boldText: {fontWeight: 'bold'},
+  button: {flexShrink: 1, width: '80vw'},
+});
 
 export default Counter;

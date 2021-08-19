@@ -1,16 +1,24 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-const initialState = {};
+// interface loading {
+//   sample/GET_POST: boolean;
+//   sample/GET_USERS: boolean;
+// }
+
+// const initialState: loading = {
+//   sample/GET_POST: true,
+//   sample_GET_USERS: true,
+// };
 
 export const loadingSlice = createSlice({
   name: 'LOADING',
-  initialState,
+  initialState: {},
   reducers: {
-    startLoading: (state, action: PayloadAction<symbol>) => ({
+    startLoading: (state, action: PayloadAction<string>) => ({
       ...state,
       [action.payload]: true,
     }),
-    endLoading: (state, action: PayloadAction<symbol>) => ({
+    endLoading: (state, action: PayloadAction<string>) => ({
       ...state,
       [action.payload]: false,
     }),

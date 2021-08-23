@@ -27,7 +27,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/Home';
 import CounterScreen from './screens/Counter';
 import GithubScreen from './screens/Github';
-import ToggleScreen from './screens/Toggle';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 const Tab = createBottomTabNavigator();
 
@@ -65,7 +64,6 @@ const RootNavigation: React.FC = () => {
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Counter" component={CounterScreen} />
           <Tab.Screen name="Github" component={GithubScreen} />
-          <Tab.Screen name="Toggle" component={ToggleScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </PaperProvider>
